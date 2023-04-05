@@ -91,7 +91,7 @@ class Auth {
     try {
       const { user } = req;
       user.set({ last_login_at: Date.now() });
-      const u = await user.save();
+      await user.save();
       return res.status(200).send({ user, token: req.cookies.jwt, ok: true });
     } catch (error) {
       console.log(error);
